@@ -93,6 +93,11 @@ int main()
     return 0;
 }
 
+//O(LOG(N) + 1) -> O(LOG(N))
+//THERE ARE 2 RECOURSIVE FUNCTIONS
+//BUT EACH STEPS ONLY ONE OF THEM WILL WORK
+//IF WE GO RIGHT WE WÝLL NOT THÝNK ABOUT THE LEFT HALF
+//SÝMÝLARLY,IF WE GO LEFT WE WÝLL NOT THÝNK ABOUT THE RÝGHT HALF
 Node *AddItemTree(Node *root, int dataToAdd)
 {
     //BASE CASE
@@ -135,6 +140,11 @@ Node *AddItemTree(Node *root, int dataToAdd)
 
 
 }
+
+// O(N + 3N) -> O(3N) -> O(N)
+//AND WE MUST VÝSÝT EVERY NODE O(N)
+//WE SHOULD NOT FORGET TO BASE CASE
+//WE HIT BASE CASE LEAF * 2 TIMES O(2N)
 void PrintTreePreorder(Node *root)// ROOT - X - X
 {
     //BASE CASE
