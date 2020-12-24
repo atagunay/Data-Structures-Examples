@@ -1,1 +1,3 @@
 # Data-Structures
+
+You can find some exercies of different hardship about data structure class 
