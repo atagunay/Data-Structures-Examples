@@ -115,7 +115,7 @@ DLLI *AddItemToEnd(DLLI *head, int dataToAdd)
         return pNewItem;
 
     }
-    else{
+    else{//CASE 2 -> LIST HAS AT LEAST ONE ITEM
 
         DLLI *temp;
         temp = head;
@@ -192,7 +192,7 @@ DLLI *DeleteItem(DLLI *head, int dataToDel)
         return head;
 
     }
-    else{//CASE 2 -> LIST HAST AT LEAST ONE ITEM
+    else{//CASE 2 -> LIST HAS AT LEAST ONE ITEM
 
         DLLI *temp;
         temp = head;
