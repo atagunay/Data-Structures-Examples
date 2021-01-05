@@ -11,7 +11,7 @@ typedef struct tagDoublyLinkedList {
 
 DLLI *AddItemToEnd(DLLI *head, int dataToAdd);
 DLLI *AddItemToHead(DLLI *head, int dataToAdd);
-DLLI *DeleteItem(DLLI *head, int dataToDel);
+DLLI* double_linked_remove(DLLI *head, int key);
 DLLI* DeleteItemOptimized(DLLI* head, int dataToDel);
 void PrintList(DLLI *head);
 
@@ -60,7 +60,7 @@ int main()
             printf("Enter Data To Delete..:");
             scanf("%d",&number);
 
-            head = DeleteItem(head, number);
+            head = double_linked_remove(head, number);
 
         }
 
@@ -178,76 +178,6 @@ DLLI *AddItemToHead(DLLI *head, int dataToAdd)
 
 }
 
-//O(N)
-//WE HAVE TWO CASE
-//OUR WORST CASE IS IN CASE2
-//IN CASE 2 IF ITEM THAT WE NEED TO DELETE AT LAST INDEX
-//WE MUST TRAVEL ALL LIST
-DLLI *DeleteItem(DLLI *head, int dataToDel)
-{
-    //CASE 1 -> LIST IS EMPTY
-    if(head == NULL){
-
-         printf("list is empy");
-        return head;
-
-    }
-    else{//CASE 2 -> LIST HAS AT LEAST ONE ITEM
-
-        DLLI *temp;
-        temp = head;
-
-        //FIND ITEM TO DELETE
-        while(temp->data != dataToDel && temp != NULL){
-
-            temp = temp->next;
-        }
-
-
-        //AFTER WHILE, TEMP RETURN WITH NULL
-        //SO THERE IS NOT DATA TO DELETE
-        if(temp == NULL){
-
-            printf("can not find item to delete");
-            return head;
-
-        }
-        else{//ITEM FOUND
-
-            //SET 1: PREVIOUS ITEM'S NEXT VALUE
-            //IF TEMP IS NOT FIRST ITEM
-            if(temp->prev != NULL){
-
-                temp->prev->next = temp->next;
-
-            }
-
-            //SET 2: NEXT ITEM'S PREVIOUS VALUE
-            //IF TEMP IS NOT LAST ITEM
-            if(temp->next != NULL){
-
-                temp->next->prev = temp->prev;
-
-            }
-
-            if(head == temp){
-
-                head = temp->next;
-
-            }
-
-            free(temp);
-            return head;
-        }
-
-    }
-
-
-}
-
-//O(N)
-//WE PRINT LIS ONE BY ONE
-//SO WE TRAVEL ALL LIST
 void PrintList(DLLI *head)
 {
     int counter = 1;
@@ -296,3 +226,47 @@ DLLI* DeleteItemOptimized(DLLI* head, int dataToDel)
     return head;
 }
 
+
+//O(N)
+//WE HAVE TWO CASE
+//OUR WORST CASE IS IN CASE2
+//IN CASE 2 IF ITEM THAT WE NEED TO DELETE AT LAST INDEX
+//WE MUST TRAVEL ALL LIST
+DLLI* double_linked_remove(DLLI *head, int key) {
+
+    DLLI *temp = head;
+
+    //CASE 1: IF DELETING ITEM IS THE FIRST ITEM
+    if(head->data == key) {
+
+    head = head -> next;
+    head -> prev = NULL;
+
+
+    }
+    else {//CASE 2: IF DELETING ITEM IS NOT THE FIRST ITEM
+
+    while(temp->data != key)
+    temp = temp -> next;
+
+    //ITEM FOUND
+    if(temp != NULL){
+
+    //SET PREV
+    temp -> prev -> next = temp -> next;
+
+
+    //IF DELETING ITEM IS NOT THE LAST ITEM
+    if(temp -> next != NULL){
+
+        //SET NEXT
+        temp -> next -> prev = temp -> prev;
+
+            }
+        }
+
+    }
+
+    free(temp);
+    return head;
+}
