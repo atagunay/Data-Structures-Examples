@@ -21,6 +21,7 @@ typedef struct tagDoublyLinkedList {
 DLLI *addItemToHead(DLLI *head, int dataToAdd);
 DLLI *addItemToEnd(DLLI *head, int dataToAdd);
 DLLI* double_linked_remove(DLLI *head, int key);
+DLLI* DeleteItemOptimized(DLLI* head, int dataToDel);
 void printList(DLLI *head);
 void printListRec(DLLI *head);
 
@@ -42,6 +43,7 @@ int main()
         printf("3-> PRINT ALL LIST\n");
         printf("4-> PRINT ALL LIST RECURSIVE\n");
         printf("5-> DELETE ITEM BY NUMBER\n");
+        printf("6-> DELETE ITEM BY NUMBER (OPTIMIZED)\n");
         printf("->");
         scanf("%d",&choice);
 
@@ -81,6 +83,15 @@ int main()
             scanf("%d",&number);
 
             head = double_linked_remove(head,number);
+
+        }
+        else if(choice == 6){
+
+            int number;
+            printf("enter number..:");
+            scanf("%d",&number);
+
+            head = DeleteItemOptimized(head,number);
 
         }
     }
@@ -287,4 +298,32 @@ DLLI* double_linked_remove(DLLI *head, int key) {
     return head;
 }
 
+DLLI* DeleteItemOptimized(DLLI* head, int dataToDel)
+{
+    // EMPTY LIST CHECK
+    if (NULL != head) {
+        DLLI* temp = head;
+
+        while(NULL != temp && temp->data.number != dataToDel)
+            temp = temp->next;
+
+        // NOT FOUND - Data is NOT in the list
+        if (NULL != temp) {
+            // ITEM FOUND - Remove it!
+            // 1- Set the previous item's next value
+            if (NULL != temp->prev)// If temp is NOT the first item!
+                temp->prev->next = temp->next;
+
+            // 2- Set the next item's previous value
+            if (NULL != temp->next) // If it is NOT the last item
+                temp->next->prev = temp->prev;
+
+            if (head == temp)
+                head = temp->next;
+
+            free(temp);
+        }
+    }
+    return head;
+}
 
