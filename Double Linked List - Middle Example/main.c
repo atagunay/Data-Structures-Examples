@@ -298,6 +298,11 @@ DLLI* double_linked_remove(DLLI *head, int key) {
     return head;
 }
 
+//O(N)
+//WE HAVE TWO CASE
+//OUR WORST CASE IS IN CASE2
+//IN CASE 2 IF ITEM THAT WE NEED TO DELETE AT LAST INDEX
+//WE MUST TRAVEL ALL LIST
 DLLI* DeleteItemOptimized(DLLI* head, int dataToDel)
 {
     // EMPTY LIST CHECK
