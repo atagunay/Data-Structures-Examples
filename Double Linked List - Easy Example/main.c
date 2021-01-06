@@ -170,7 +170,10 @@ DLLI *AddItemToHead(DLLI *head, int dataToAdd)
         //SET 1: NEW ITEM NEXT IS HEAD
         pNewItem->next = head;
 
-        //SET2: HEAD POINT OUT NEW ITEM
+        //SET 2: OLD HEAD'S PREV
+        head->prev = pNewItem;
+
+        //SET3 : HEAD POINT OUT NEW ITEM
         head = pNewItem;
 
         return head;

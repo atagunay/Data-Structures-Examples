@@ -130,7 +130,10 @@ DLLI *addItemToHead(DLLI *head, int dataToAdd)
         //SET1: PNEWITEM'S NEXT
         pNewItem->next = head;
 
-        //SET2: NEW HEAD
+        //SET2: OLD HEAD'S PREV
+        head->prev = pNewItem;
+
+        //SET3: NEW HEAD
         head = pNewItem;
 
         return head;
