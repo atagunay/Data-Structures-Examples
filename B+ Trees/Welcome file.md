@@ -21,6 +21,7 @@
 ## 3) Find Links and Index Fields For Each Index Node 
 
 **Node Size = (M - 1) * index + M * pointers** 
+
 	8192 bytes = (M - 1) * 32  bytes + M * 4 bytes;
 	8192 = 36M - 32
 	M = 228
@@ -30,6 +31,7 @@
 
 ## 4) Find Count of Data Nodes in B+ Trees
 **record count = data count in a data node * data node count**
+
 	10 million = 32 * data node count
 	data node count =  312500
 
@@ -38,6 +40,7 @@
 ## 5) Find Count of Index Nodes in B+ Trees
 
 **data node count = link count in an index node * index node count**
+
 	312500 = 228 * index node count
 	index node count = 1370
 
@@ -46,6 +49,7 @@
 ## 6) If exist, Find Upper Index Node
 
 **1370 > 228, This  means we need to have upper index nodes.**
+
 	1370 = 228 * upper index node
 	upper index node = 6
 
