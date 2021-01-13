@@ -1,4 +1,4 @@
-# Find MIN Height of B+ Trees
+﻿# Find MIN Height of B+ Trees
 
 ## 1) Prepare Assumption
 - 10 million records  **[RECORD COUNT]**
@@ -58,3 +58,5 @@
  - [ ]  312500 data nodes are required for 10 million records
 
 MIN HEIGHT = 3
+	
+ 
