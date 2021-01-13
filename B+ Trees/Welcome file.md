@@ -9,6 +9,7 @@
 
 ## 2) Find Data Count For Each Data Node
 
+
 **Node size = data count * record size**
 
 	8KB = L * 256 bytes
