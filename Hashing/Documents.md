@@ -1,4 +1,4 @@
-## HASING
+﻿## HASING
 
 ### 1-What Is The Hasing ?
 
@@ -53,6 +53,7 @@ Answer is: **Separate Chaining Hash Table**
 This is Mixture of arrays and linked list. Each linked list will be considired chain. Those chains are seperate each other.
 
 If you have two different items want to go same location, you create linked list and add those items in that list.
+
 
 
 
