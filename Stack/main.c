@@ -6,7 +6,7 @@
 typedef struct{
 
     int data[STACK_SIZE];
-    int top; //WE KEEP INDEX OF TOP ITEM
+    int top; //WE KEEP INDEX OF TOP ITEM - (STACK POINTER)
 
 }stack;
 
@@ -15,6 +15,12 @@ void reset(stack *stk); //DELETE ALL STACK
 void printStack(stack *stk); // PRINT
 void pop(stack *stk); //DELETE TOP ITEM
 void peek(stack *stk); //LOOK TOP ITEM
+int isFull(stack *stk);
+int isEmpty(stack *stk);
+
+//INFORMATION NOTE
+//If Stack is full and if you want to add new data onto this stack it is called as Stack Overflow.
+//If Stack is empty and if you want to Pop data from this stack it is called as Stack Underflow.
 
 int main()
 {
@@ -155,6 +161,46 @@ void peek(stack *stk)
     else{
 
         printf("%d\n",stk->data[stk->top]);
+
+    }
+
+
+}
+
+//O(1)
+//IT IS A CONSTANT TIME JOB
+//WE PROCESS ONLY ONE TIME
+//WE CAN CHECK IF LIST IS FULL WITH ONE STEP
+int isFull(stack *stk)
+{
+
+    if(stk->top == STACK_SIZE - 1){
+
+        return 1;
+
+    }
+    else{
+
+        return 0;
+    }
+
+}
+
+//O(1)
+//IT IS A CONSTANT TIME JOB
+//WE PROCESS ONLY ONE TIME
+//WE CAN CHECK IF LIST IS EMPTY WITH ONE STEP
+int isEmpty(stack *stk)
+{
+
+    if(stk->top == -1){
+
+        return 1;
+
+    }
+    else{
+
+        return 0;
 
     }
 
