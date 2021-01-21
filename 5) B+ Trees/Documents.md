@@ -20,7 +20,7 @@
 
 ## 3) Find Links and Index Fields For Each Index Node 
 
-**Node Size = (M - 1) * index + M * pointers** 
+**Node Size = (M - 1) * index field + M * pointers** 
 
 	8192 bytes = (M - 1) * 32  bytes + M * 4 bytes;
 	8192 = 36M - 32
