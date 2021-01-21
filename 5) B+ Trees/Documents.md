@@ -27,7 +27,7 @@
 	M = 228
 	
 - An index node(inner node) can have up to 228 links and 227 index fields at max.
-- An index node(inner node) can have up to 114 links and 223 index fields at min.
+- An index node(inner node) can have up to 114 links and 113 index fields at min.
 
 ## 4) Find Count of Data Nodes in B+ Trees
 **record count = data count in a data node * data node count**
